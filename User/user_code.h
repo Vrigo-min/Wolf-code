@@ -5,6 +5,7 @@
 
 void Init(void);
 void Test(void);
+void Devices_init(void);
 
 
 #endif 

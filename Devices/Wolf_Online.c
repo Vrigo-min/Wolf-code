@@ -10,7 +10,7 @@
   ******************************************************************************
   */
 
-uint8_t  WolfOnline_rxBuff[WolfOnline_PACKSIZE + 2]; 	//接收buff
+char  WolfOnline_rxBuff[WolfOnline_PACKSIZE + 2]; 	//接收buff
 WolfOnline_DATA_t WolfOnline_Data;
 
 //野狼队软件组上位机协议。
@@ -23,7 +23,7 @@ void WolfOnline_init(uint32_t USART_BaudRate) {
 }
 
 void WolfOnline_Compute(char* content) {
-	int temp = 0;
+	int temp = 0,temp2 = 0;
 	float tempP, tempI, tempD;
 	WolfOnline_Data.infoUpdateFrame++;
 
@@ -76,13 +76,13 @@ void WolfOnline_Compute(char* content) {
 		case 0:
 			if (strstr(content, "=,,!") == 0)
 			{
-			
+
 				for (int i = 0; i < 4; i++) {
 //					IncrementalPID_setPara(&M3508s[i].pid, tempP, tempI, tempD);
 					//IncrementalPID_paraReset(&M3508s[i].pid, 2.5f, 0.8f, 0.0f, M2006_MaxOutput, 1000);
 				}
 			}
-			
+
 //			printf("#%d=%.1f,%.1f,%.1f~ChassisWeel!\n", 0, M3508s[0].pid.Kp, M3508s[0].pid.Ki, M3508s[0].pid.Kd);
 			break;
 		case 1:
@@ -98,7 +98,7 @@ void WolfOnline_Compute(char* content) {
 			{
 //				PositionPID_setPara(&Cloud.YawSpeed_pid, tempP, tempI, tempD);
 			}
-//				printf("#%d=%.1f,%.1f,%.1f~CloudYawSpeed!\n", 2, Cloud.YawSpeed_pid.Kp, Cloud.YawSpeed_pid.Ki, Cloud.YawSpeed_pid.Kd);
+//			printf("#%d=%.1f,%.1f,%.1f~CloudYawSpeed!\n", 2, Cloud.YawSpeed_pid.Kp, Cloud.YawSpeed_pid.Ki, Cloud.YawSpeed_pid.Kd);
 
 			break;
 		case 3:
@@ -115,7 +115,7 @@ void WolfOnline_Compute(char* content) {
 			{
 //				PositionPID_setPara(&Cloud.PitchSpeed_pid, tempP, tempI, tempD);
 			}
-//				printf("#%d=%.1f,%.1f,%.1f~CloudPitchSpeed!\n", 4, Cloud.PitchSpeed_pid.Kp, Cloud.PitchSpeed_pid.Ki, Cloud.PitchSpeed_pid.Kd);
+//			printf("#%d=%.1f,%.1f,%.1f~CloudPitchSpeed!\n", 4, Cloud.PitchSpeed_pid.Kp, Cloud.PitchSpeed_pid.Ki, Cloud.PitchSpeed_pid.Kd);
 
 			//printf("#%d=%f,%f,%f-YawSpeed!\n", );
 			break;
@@ -152,18 +152,51 @@ void WolfOnline_Compute(char* content) {
 	{
 		// 1'/3 2.6 逆时针
 		sscanf(content, "@rArm=%d", &temp);
-		temp = temp * 32.6 + 1400;
-		printf("电机%d\n", M2006_Reload.targetAngle);
-		M2006_Reload.targetAngle += 1023;
+//		shoot.Interval = temp ;
+		/*	temp = temp * 32.6 + 1400;*/
+//		printf("射击间隔 %d\n", shoot.Interval);
+		/*	M2006_Reload.targetAngle += 1023;*/
+
+			//TIM_SetCompare1(TIM8, temp);
+		return;
+	}
+	if (strstr(content, "@fric="))
+	{
+		// 1'/3 2.6 逆时针
+		sscanf(content, "@fric=%d,%d", &temp, &temp2);
+
+		if (temp >= 1000)
+		{
+//			while (temp != shoot.Fric.output)
+//			{
+//				if (temp > shoot.Fric.output)
+//				{
+////					shoot.Fric.output++;
+//				}
+//				else
+//				{
+////					shoot.Fric.output--;
+//				}
+//			}
+			if (temp2 >= 0)
+			{
+//				shoot.manul_need = temp2;
+			}
+		}
+		else {
+//			shoot.Fric.output = 0;
+		}
+//		printf("@fric=%d,颗数%d 射击间隔 %d\n", shoot.Fric.output, shoot.manul_need, shoot.Interval);
+
 
 		//TIM_SetCompare1(TIM8, temp);
-		return;
+
 	}
 	if (strstr(content, "@shoot="))
 	{
 		// 1'/3 2.6 逆时针
 		sscanf(content, "@shoot=%d", &temp);
-		if (temp >=0 )
+		if (temp >= 0)
 		{
 //			Shoot_setAmount_NeedLaunch(temp);
 		}

@@ -106,25 +106,22 @@ void DR16_dataProcess(uint8_t *pData) {
 
 void RemoteMode_Update(void)
 {
-
+	//-------------------遥控器控制模式
 	switch (dr16_data.rc.s_left)
 	{
-	case RemotePole_UP: //-------------------PC控制、蓝牙。
-		M2006_setCurrent(0, 0, 0, 0);
-		M6020_setCurrent(0, 0, 0, 0);
+	case RemotePole_UP: 
 		M3508_setCurrent(0, 0, 0, 0);
 
 		break;
-	case RemotePole_MID://-------------------遥控器控制模式
-		M2006_DR16Control();
+	case RemotePole_MID:
+
+		M3508s_DR16Control();
 
 	switch (dr16_data.rc.s_right)
 		{
 		case RemotePole_UP:
-			M6020_DR16Control();
 			break;
 		case RemotePole_MID:
-			M3508s_DR16Control();
 			break;
 		case RemotePole_DOWM:
 			

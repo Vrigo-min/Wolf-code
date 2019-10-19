@@ -435,24 +435,19 @@
               <FilePath>..\..\Devices\M3508_Motor.c</FilePath>
             </File>
             <File>
-              <FileName>Minibalance_Motor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\Devices\Minibalance_Motor.c</FilePath>
-            </File>
-            <File>
               <FileName>Debug_ANO.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Devices\Debug_ANO.c</FilePath>
             </File>
             <File>
-              <FileName>Debug_DataScope.C</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\Devices\Debug_DataScope.C</FilePath>
-            </File>
-            <File>
               <FileName>DR16_Remote.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Devices\DR16_Remote.c</FilePath>
+            </File>
+            <File>
+              <FileName>Wolf_Online.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Devices\Wolf_Online.c</FilePath>
             </File>
           </Files>
         </Group>

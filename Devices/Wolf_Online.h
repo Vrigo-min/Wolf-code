@@ -20,7 +20,7 @@ extern WolfOnline_DATA_t WolfOnline_Data;
 
 
 
-extern  uint8_t  WolfOnline_rxBuff[WolfOnline_PACKSIZE + 2]; 	//接收buff
+extern  char  WolfOnline_rxBuff[WolfOnline_PACKSIZE + 2]; 	//接收buff
 
 void WolfOnline_Compute(char* content);
 

@@ -61,49 +61,44 @@ void M3508_getInfo(CanRxMsg RxMessage) {
 	M3508s[StdId].M3508InfoUpdateFrame++;
 	M3508s[StdId].M3508InfoUpdateFlag = 1;
 }
-//PID初始化
+
+
 void M3508s_Init(void)
 {
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 2; i++)
 	{
-		//位置式PID
-		PositionPID_paraReset(&M3508s[i].Po_angle_pid,3.0f,0.0f,0.0f,8000,1000);
-		PositionPID_paraReset(&M3508s[i].Po_speed_pid, 3.0f, 0.0f, 0.0f,8000,1000);
-		//增量式PID
-		IncrementalPID_paraReset(&M3508s[i].In_angle_pid, 3.0f, 0.0f, 0.0f, 8000, 1000);
-		IncrementalPID_paraReset(&M3508s[i].In_speed_pid,10.f,0.0f,0.0f,8000,1000);
+		PositionPID_paraReset(&M3508s[i].pid_Angle, 0.0f, 0.0f, 0.0f, 8000, 1000);
+		PositionPID_paraReset(&M3508s[i].pid_Speed, 0.0f, 0.0f, 0.0f, 8000, 1000);
+		IncrementalPID_paraReset(&M3508s[i].PID_Speed, 0.0f, 0.0f, 0.0f, 8000, 1000);
 	}
 }
-void M3508s_DR16Control()
-{
-	int16_t M3508speed[4];
-	int16_t M3508angle[4];
 
-	
-	for (int i = 0; i < 4; i++)
+void M3508s_DR16Control(void)
+{
+	int16_t M3508speed[2];
+	int16_t M3508angle[2];
+
+	for (int i = 0; i < 2; i++)
 	{
 		if (M3508s[i].M3508InfoUpdateFlag == 1)
 		{
-			M3508speed[i] = dr16_data.rc.ch0*5.0f;  //遥控器左拨杆的x轴
-			M3508angle[i] = dr16_data.rc.ch1*5.0f;  //遥控器左拨杆的y轴
-			
-			M3508s[i].targetSpeed = M3508speed[i];//目标速度赋值
-			M3508s[i].targetAngle = M3508angle[i];//目标角度赋值
+			M3508angle[i] = dr16_data.rc.ch0*5.0f;
+			M3508speed[i] = dr16_data.rc.ch1*5.0f;
 
-			//给输出电流赋值
-			M3508s[i].In_outCurrent= Incremental_PID(&M3508s[i].In_speed_pid,M3508s[i].targetSpeed,M3508s[i].realSpeed);
-			/*M3508s[i].In_PIDCurrent = Incremental_PID(&M3508s[i].In_angle_pid,M3508s[i].targetAngle,M3508s[i].realAngle);
-			M3508s[i].Po_outCurrent = Position_PID(&M3508s[i].Po_angle_pid, M3508s[i].targetAngle,M3508s[i].realAngle);
-			M3508s[i].Po_PIDCurrent = Position_PID(&M3508s[i].Po_speed_pid,M3508s[i].targetSpeed,M3508s[i].realSpeed);*/
+			M3508s[i].targetAngle = M3508angle[i];
+			M3508s[i].targetSpeed = M3508speed[i];
+
+			M3508s[i].outCurrent = Position_PID(&M3508s[i].pid_Angle, M3508s[i].targetAngle, M3508s[i].totalAngle);
+			M3508s[i].PIDCurrent = Position_PID(&M3508s[i].pid_Speed, M3508s[i].outCurrent, M3508s[i].realSpeed);
+			M3508s[i].IPIDCurrent = Incremental_PID(&M3508s[i].PID_Speed, M3508s[i].targetSpeed, M3508s[i].realSpeed);
 
 			M3508s[i].M3508InfoUpdateFlag = 0;
+
 		}
-
 	}
-	M3508_setCurrent(0, 0, M3508s[2].In_outCurrent, 0);
-	/*M3508_setCurrent(M3508s[0].In_PIDCurrent, M3508s[1].In_PIDCurrent,M3508s[2].In_PIDCurrent, M3508s[3].In_PIDCurrent);
-	M3508_setCurrent(M3508s[0].Po_outCurrent, M3508s[1].Po_outCurrent, M3508s[2].Po_outCurrent, M3508s[3].Po_outCurrent);
-	M3508_setCurrent(M3508s[1].Po_PIDCurrent, M3508s[2].Po_PIDCurrent, M3508s[3].Po_PIDCurrent,M3508s[3].Po_PIDCurrent);*/
-}
+	M3508_setCurrent(M3508s[0].PIDCurrent, M3508s[1].PIDCurrent, M3508s[2].PIDCurrent, M3508s[3].PIDCurrent);
+	//M3508_setCurrent(M3508s[0].IPIDCurrent, M3508s[1].IPIDCurrent, M3508s[1].IPIDCurrent, M3508s[1].IPIDCurrent);
 
+
+}
 
