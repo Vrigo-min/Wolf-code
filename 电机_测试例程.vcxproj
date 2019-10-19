@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{6BBE86B2-974D-4B00-B014-E153A37952A1}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>__arm__;WIN32;_DEBUG;_CONSOLE;STM32F427_437xx;__CC_ARM;USE_STDPERIPH_DRIVER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm;$(ProjectDir)Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates;$(ProjectDir)Libraries\CMSIS\Device\ST\STM32F4xx\Source;$(ProjectDir)Libraries\CMSIS\Device\ST\STM32F4xx\Include;$(ProjectDir)Libraries\CMSIS\Device\ST\STM32F4xx;$(ProjectDir)Libraries\CMSIS\Device\ST;$(ProjectDir)Libraries\STM32F4xx_StdPeriph_Driver\src;$(ProjectDir)Libraries\STM32F4xx_StdPeriph_Driver\inc;$(ProjectDir)Libraries\CMSIS\Include;$(ProjectDir)Libraries\CMSIS\Device;$(ProjectDir)Libraries\STM32F4xx_StdPeriph_Driver;$(ProjectDir)Libraries\CMSIS;$(ProjectDir)User;$(ProjectDir)Libraries;$(ProjectDir)Doc;$(ProjectDir)Devices;$(ProjectDir)BSP;$(ProjectDir)Apps;$(ProjectDir)Algorithm;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Algorithm\AddMath.c" />
+    <ClCompile Include="Algorithm\Filter.c" />
+    <ClCompile Include="Algorithm\PID.c" />
+    <ClCompile Include="Algorithm\Ramp.c" />
+    <ClCompile Include="Apps\Chassis_control.c" />
+    <ClCompile Include="Apps\Cloud_control.c" />
+    <ClCompile Include="Apps\DevicesMonitor.c" />
+    <ClCompile Include="Apps\Robot_control.c" />
+    <ClCompile Include="Apps\Rocker.c" />
+    <ClCompile Include="Apps\Shoot.c" />
+    <ClCompile Include="Apps\Test_control.c" />
+    <ClCompile Include="BSP\CAN.c" />
+    <ClCompile Include="BSP\delay.c" />
+    <ClCompile Include="BSP\NVIC.c" />
+    <ClCompile Include="BSP\TIM.c" />
+    <ClCompile Include="BSP\USART.c" />
+    <ClCompile Include="Devices\Debug_ANO.c" />
+    <ClCompile Include="Devices\Debug_DataScope.C" />
+    <ClCompile Include="Devices\DR16_Remote.c" />
+    <ClCompile Include="Devices\Driver_Remote.c" />
+    <ClCompile Include="Devices\KEY.c" />
+    <ClCompile Include="Devices\Laser.c" />
+    <ClCompile Include="Devices\LED.c" />
+    <ClCompile Include="Devices\M2006_Motor.c" />
+    <ClCompile Include="Devices\M3508_Motor.c" />
+    <ClCompile Include="Devices\M6020_Motor.c" />
+    <ClCompile Include="Devices\M6623_Motor.c" />
+    <ClCompile Include="Devices\Minibalance_Motor.c" />
+    <ClCompile Include="Devices\Wolf_GyIMU.c" />
+    <ClCompile Include="Devices\Wolf_Online.c" />
+    <ClCompile Include="Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\misc.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_adc.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_can.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cec.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_crc.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cryp.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cryp_aes.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cryp_des.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cryp_tdes.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dac.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dbgmcu.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dcmi.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dfsdm.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dma.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dma2d.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dsi.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_exti.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_flash.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_flash_ramfunc.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_fmc.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_fmpi2c.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_fsmc.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_gpio.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_hash.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_hash_md5.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_hash_sha1.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_i2c.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_iwdg.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_lptim.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_ltdc.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_pwr.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_qspi.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rcc.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rng.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rtc.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_sai.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_sdio.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_spdifrx.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_spi.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_syscfg.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_tim.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_usart.c" />
+    <ClCompile Include="Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_wwdg.c" />
+    <ClCompile Include="User\main.c" />
+    <ClCompile Include="User\stm32f4xx_it.c" />
+    <ClCompile Include="User\user_code.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Algorithm\AddMath.h" />
+    <ClInclude Include="Algorithm\Filter.h" />
+    <ClInclude Include="Algorithm\PID.h" />
+    <ClInclude Include="Algorithm\Ramp.h" />
+    <ClInclude Include="Apps\Chassis_control.h" />
+    <ClInclude Include="Apps\Cloud_control.h" />
+    <ClInclude Include="Apps\DevicesMonitor.h" />
+    <ClInclude Include="Apps\Robot_control.h" />
+    <ClInclude Include="Apps\Rocker.h" />
+    <ClInclude Include="Apps\Shoot.h" />
+    <ClInclude Include="Apps\Test_control.h" />
+    <ClInclude Include="BSP\CAN.h" />
+    <ClInclude Include="BSP\delay.h" />
+    <ClInclude Include="BSP\NVIC.h" />
+    <ClInclude Include="BSP\TIM.h" />
+    <ClInclude Include="BSP\USART.h" />
+    <ClInclude Include="Devices\Debug_ANO.h" />
+    <ClInclude Include="Devices\Debug_DataScope.h" />
+    <ClInclude Include="Devices\DR16_Remote.h" />
+    <ClInclude Include="Devices\Driver_Remote.h" />
+    <ClInclude Include="Devices\KEY.h" />
+    <ClInclude Include="Devices\Laser.h" />
+    <ClInclude Include="Devices\LED.h" />
+    <ClInclude Include="Devices\M2006_Motor.h" />
+    <ClInclude Include="Devices\M3508_Motor.h" />
+    <ClInclude Include="Devices\M6020_Motor.h" />
+    <ClInclude Include="Devices\M6623_Motor.h" />
+    <ClInclude Include="Devices\Minibalance_Motor.h" />
+    <ClInclude Include="Devices\Wolf_GyIMU.h" />
+    <ClInclude Include="Devices\Wolf_Online.h" />
+    <ClInclude Include="Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h" />
+    <ClInclude Include="Libraries\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h" />
+    <ClInclude Include="Libraries\CMSIS\Include\arm_common_tables.h" />
+    <ClInclude Include="Libraries\CMSIS\Include\arm_const_structs.h" />
+    <ClInclude Include="Libraries\CMSIS\Include\arm_math.h" />
+    <ClInclude Include="Libraries\CMSIS\Include\core_cm0.h" />
+    <ClInclude Include="Libraries\CMSIS\Include\core_cm0plus.h" />
+    <ClInclude Include="Libraries\CMSIS\Include\core_cm3.h" />
+    <ClInclude Include="Libraries\CMSIS\Include\core_cm4.h" />
+    <ClInclude Include="Libraries\CMSIS\Include\core_cm7.h" />
+    <ClInclude Include="Libraries\CMSIS\Include\core_cmFunc.h" />
+    <ClInclude Include="Libraries\CMSIS\Include\core_cmInstr.h" />
+    <ClInclude Include="Libraries\CMSIS\Include\core_cmSimd.h" />
+    <ClInclude Include="Libraries\CMSIS\Include\core_sc000.h" />
+    <ClInclude Include="Libraries\CMSIS\Include\core_sc300.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cec.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cryp.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dfsdm.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dsi.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmpi2c.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_hash.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_lptim.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_qspi.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rng.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spdifrx.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h" />
+    <ClInclude Include="Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h" />
+    <ClInclude Include="User\stm32f4xx_conf.h" />
+    <ClInclude Include="User\stm32f4xx_it.h" />
+    <ClInclude Include="User\typedef.h" />
+    <ClInclude Include="User\user_code.h" />
+    <ClInclude Include="User\user_common.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Project\RVMDK（uv5）\Objects\Robotmaster_Infantry.build_log.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Project\RVMDK（uv5）\Objects\Robotmaster_Infantry.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
